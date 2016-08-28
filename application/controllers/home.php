@@ -157,15 +157,16 @@ class Home extends CI_Controller
 			$session = $this->session->all_userdata(); 
 			// print_r($session);
 			// exit();
-			switch ($session['user_type']) {
-				case 1:
-					redirect('home/dashboard_doctor', 'refresh');
-					break;
+			redirect('home', 'refresh');
+			// switch ($session['user_type']) {
+			// 	case 1:
+			// 		redirect('home/dashboard_doctor', 'refresh');
+			// 		break;
 				
-				case 2:
-					redirect('home/dashboard_donor', 'refresh');
-					break;
-			}
+			// 	case 2:
+			// 		redirect('home/dashboard_donor', 'refresh');
+			// 		break;
+			// }
 		}
 		// print_r($this->session->all_userdata());
 		// exit();
