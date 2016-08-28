@@ -10,7 +10,7 @@
 <br/>
 <?php if ($add):?>
 		<div class="alert alert-success" role="alert">Registration Successful.</div>
-	<?php endif;?>
+	<?php endif;?>	
 <br/>
 
 

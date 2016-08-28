@@ -7,61 +7,49 @@
 <br/>
 <br/>
             <div class="row">
-  <?php
-    if(isset($patients) && is_array($patients) && count($patients) > 0)
-    {
-      foreach($patients as $patient)
-      {
-    
-  ?>
-    <div class="col-md-4 wow fadeInDown">
-           <div class="clients-comments text-center">
-            <a class="preview" href="<?php echo base_url('asset/pics/7.jpg')?>" rel="prettyPhoto">
-            <img  class="img-circle" src="<?php echo base_url('asset/pics/7.jpg')?>" width="30%" alt="" />
-            </a>
-                
-            <?php echo '<h3>'.$patient->nickname.'</h3>';?>
-                <?php echo '<h3>'.$patient->complication_name.'</h3>';?>
-                <?php echo $patient->complicatin_desc;?>
-                <?php echo $patient->user_remarks;?>
-
-                <br/>
-            <a class="preview" href="" rel="prettyPhoto">
+            <table class="table table-striped">
+              <thead><tr>
+                <th>nickname</th>
+                <th>disease name</th>
+                <th>disease description</th>
+                <th>remarks</th>
+                <th>total donors</th>
+                <th>total volunteers</th>
+                <th>Actions</th>
+              </tr></thead>
+              <tbody><?php if(isset($patients) && is_array($patients) && count($patients) > 0):?>
+                <?php foreach($patients as $patient):?>
+                  <tr>
+                    <td><?php echo '<h3>'.$patient->nickname.'</h3>';?></td>
+                    <td><?php echo '<h3>'.$patient->complication_name.'</h3>';?></td>
+                    <td><?php echo $patient->complicatin_desc;?></td>
+                    <td><?php echo $patient->user_remarks;?></td>
+                    <td><a class="preview" href="" rel="prettyPhoto">
             <img  class="img-circle" src="<?php echo base_url('asset/icon/heart.png')?>" alt="" />
             2 Donors
-            </a>
-<br/>            <a class="preview" href="" rel="prettyPhoto">
+            </a></td>
+                    <td><a class="preview" href="" rel="prettyPhoto">
             <img  class="img-circle" src="<?php echo base_url('asset/icon/heart.png')?>" alt="" />
             1 Doctor Donor
-            </a>
+            </a></td>
+                    <td><a href="#" data-toggle="modal" data-target="#donate_modal"> <input type="button" class="btn btn-primary" value="Donate"></input></a>
+|
+<a href="#" data-toggle="modal" data-target="#volunteer_modal">
+<input type="button" class="btn btn-danger"  value="Volunteer"></input> </a></td>
+                  </tr>
+                <?php endforeach; ?>
+                <?php endif;?></tbody>
+              
+            </table>
 <br/>
-            <a class="preview" href="" rel="prettyPhoto">
-            <img  class="img-circle" src="<?php echo base_url('asset/icon/table_money.png')?>" alt="" />
-            20, 000 Amount Needed
-            </a>
-<br/>            <a class="preview" href="" rel="prettyPhoto">
-            <img  class="img-circle" src="<?php echo base_url('asset/icon/save_money.png')?>" alt="" />
-            10, 000 Amount Donated
-            </a>
-<br/>
 
 
-<a href="#" data-toggle="modal" data-target="#donate_modal"><i class="glyphicon glyphicon-user" type="button"></i>  <input type="button" class="btn btn-primary" style="float:right;" value="Donate"></input></a>
 
-<a href="#" data-toggle="modal" data-target="#volunteer_modal"><i class="glyphicon glyphicon-user" type="button"></i>  
-<input type="button" class="btn btn-danger" style="float:right;" value="Volunteer"></input> </a>
 
 
      
           </div>
     </div>
-
-
-  <?php
-      }
-    }
-  
-  ?>
   </div>
 
         </div><!--/.container-->
@@ -71,10 +59,9 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Modal title</h4>
+            <h4 class="modal-title">Donation</h4>
           </div>
           <div class="modal-body">
-  <h1>Donation</h1>
   <form class="form-horizontal" action="<?php echo base_url();?>index.php/home/home2" method="POST">
       <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Account Number</label>
