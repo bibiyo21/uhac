@@ -15,7 +15,17 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$this->load->view('header');
-		$this->load->view('content');
+		$qry = $this->db->query("Select * from tbl_patients");
+		$data['patients'] = $qry->result();
+		$this->load->view('dashboard',$data);
+		$this->load->view('footer');
+	}
+	public function doctor()
+	{
+		$this->load->view('header');
+		$qry = $this->db->query("Select u.*,d.* from  tbl_users as u  inner join tbl_doctor_donors as d where d.uploaded_by = u.id");
+		$data['doctors'] = $qry->result();
+		$this->load->view('doctor', $data);
 		$this->load->view('footer');
 	}
 
@@ -76,11 +86,8 @@ class Home extends CI_Controller
 		// } else {
 		//   print_r(json_decode($response));
 		// }
-		$data = array (
-				
-			);
 
-		$this->health_model->add_donors($data);
+		// $this->health_model->add_donors($data);
 		return json_decode($response);
 
 		// $this->load->view('header');
@@ -95,10 +102,10 @@ class Home extends CI_Controller
 		}
 
 		$data = (array)$this->transaction();
-		// print_r($data);
-		// exit();
 		$this->load->view('header');
-		$this->load->view('success', $data);
+		$qry = $this->db->query("Select * from tbl_patients");
+		$data['patients'] = $qry->result();
+		$this->load->view('dashboard2',$data);
 		$this->load->view('footer');
 	}
 
@@ -188,17 +195,25 @@ class Home extends CI_Controller
 	public function patient()
 	{
 		$this->load->view('header');
-		$this->load->view('patient');
+
+		$qry = $this->db->query("Select * from tbl_patients where upload_by = '1'");
+		$data['patients'] = $qry->result();
+		$this->load->view('patient',$data);
+		
 		$this->load->view('footer');
 	}
 
 	public function add_patient()
 	{
 		$input = $this->input->post();
-		$input['upload_by'] = $this->session->userdata('id');
+		$input['upload_by'] = 1;
 		$data['add'] = $this->health_model->add_patient($input);
 		$this->load->view('header');
-		$this->load->view('patientSuccess', $data);
+
+		$qry = $this->db->query("Select * from tbl_patients where upload_by = '1'");
+		$data['patients'] = $qry->result();
+		$this->load->view('patient',$data);
+		
 		$this->load->view('footer');
 	}
 }

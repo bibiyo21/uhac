@@ -21,7 +21,10 @@
 	<div class="blog-masthead">
       	<div class="container">
         	<nav class="blog-nav">
+	          	<a class="blog-nav-item" href="<?php echo base_url();?>index.php"><img src="<?php echo base_url();?>asset/pics/logo.png" width="50%"/> </a>
 	          	<a class="blog-nav-item" href="<?php echo base_url();?>index.php">Home</a>
+	          	<a class="blog-nav-item" href="<?php echo base_url();?>index.php/home/doctor">Doctor</a>
+	          	<a class="blog-nav-item" href="<?php echo base_url();?>index.php/home/patient">Patient</a>
 	          	<a class="blog-nav-item" href="<?php echo base_url();?>index.php/home/login">Login</a>
 	          	<a class="blog-nav-item" href="<?php echo base_url();?>index.php/home/registration">Registration</a>
         	</nav>
@@ -29,9 +32,6 @@
     </div>
 
     <div class="container">
-    	<div class="blog-header">
-        <h1 class="blog-title">TITLE of our application</h1>
-        <p class="lead blog-description">Be informed and Be Aware</p>
-      </div>
+    	
 		
 		

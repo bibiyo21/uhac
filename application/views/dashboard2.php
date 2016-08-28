@@ -1,15 +1,16 @@
 
 
 
-
          <section id="feature">
 
 <br/>
-<a href="#" data-toggle="modal" data-target="#donate_modal"> <input type="button" class="btn btn-primary" value="Add a Patient"></input></a>
 <br/>
 <br/>
-
-
+<?php if(!empty($error_message)): ?>
+		<div class="alert alert-danger" role="alert">Account does not exists.</div>
+	<?php else: ?>
+		<div class="alert alert-success" role="alert">Transaction Successful.</div>
+	<?php endif; ?>
             <div class="row">
   <?php
     if(isset($patients) && is_array($patients) && count($patients) > 0)
@@ -50,6 +51,8 @@
 <br/>
 
 
+<input type="button" class="btn btn-danger" style="float:right;" value="Volunteer"></input> 
+<a href="#" data-toggle="modal" data-target="#loginModal_stud"><i class="glyphicon glyphicon-user" type="button"></i>  <input type="button" class="btn btn-primary" style="float:right;" value="Donate"></input></a>
 
 
      
@@ -57,7 +60,6 @@
     </div>
 
 
- 	
   <?php
       }
     }
@@ -67,63 +69,7 @@
 
         </div><!--/.container-->
     </section><!--/#feature-->
-    <div class="modal fade" tabindex="-1" role="dialog" id="donate_modal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Modal title</h4>
-          </div>
-          <div class="modal-body">
-<div class="">
-	<h1>Add a patient</h1>
-	<form class="form-horizontal" action="<?php echo base_url();?>index.php/home/add_patient" method="POST">
-		<div class="form-group">
-	    	<label for="inputPassword3" class="col-sm-2 control-label">Nickname</label>
-	    	<div class="col-sm-10">
-	      		<input type="text" class="form-control" id="inputPassword3" name="nickname" placeholder="nickname" >
-	    	</div>
-	  	</div>
-
-	  	<div class="form-group">
-	    	<label for="inputPassword3" class="col-sm-2 control-label">Disease Descrption</label>
-	    	<div class="col-sm-10">
-	      		<input type="text" class="form-control" id="inputPassword3" name="complication_name" placeholder="Disease Descrption" >
-	    	</div>
-	  	</div>
-
-	  	<div class="form-group">
-	    	<label for="inputPassword3" class="col-sm-2 control-label">Disease Detailed Description</label>
-	    	<div class="col-sm-10">
-	    		<textarea class="form-control" name="complicatin_desc" required></textarea>
-	  
-	    	</div>
-	  	</div>
-
-	  	<div class="form-group">
-	    	<label for="inputPassword3" class="col-sm-2 control-label">Uploader Remarks</label>
-	    	<div class="col-sm-10">
-	      		<textarea class="form-control" name="user_remarks" ></textarea>
-	    	</div>
-	  	</div>
-
-	  	<div class="form-group">
-		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Register</button>
-		    </div>
-	  	</div>
-	  	
-	</form>
-</div>
-
-
-          </div>
-          <div class="modal-footer">
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="volunteer_modal">
+    <div class="modal fade" tabindex="-1" role="dialog" id="loginModal_stud">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
